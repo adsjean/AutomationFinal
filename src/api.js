@@ -1,3 +1,5 @@
+let shell = require("shelljs");
+
 const {
   runTS,
   runJS,
