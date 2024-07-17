@@ -43,7 +43,7 @@ module.exports = (pool) => {
 
   // Save MongoDB - Salva apenas os dados que desejar no banco de dados mongoDB
   router.post('/mongodb',async function(req,res){
-    await tsGenerate(req, res);
+    //await tsGenerate(req, res);
     const resultado = await saveMongDB(req, res);
     console.log(resultado)
     res.json({ message: resultado });
