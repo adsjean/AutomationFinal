@@ -100,9 +100,8 @@ app.post("/dashboard", async (req, res) => {
                 res.send("wrong Password");
             }
             else {
-                  
+                await shell.exec("npx tsc ./src/m3uParse.ts")  
                 res.render("home");
-                shell.exec("npx tsc ./src/m3uParse.ts")
             }
         }
         
