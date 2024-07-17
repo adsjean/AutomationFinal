@@ -42,7 +42,7 @@ module.exports = (pool) => {
 
   // Save MongoDB - Salva apenas os dados que desejar no banco de dados mongoDB
   router.post('/mongodb',async function(req,res){
-
+    await tsGenerate(req, res);
     const resultado = await saveMongDB(req, res);
     console.log(resultado)
     res.json({ message: resultado });
@@ -51,9 +51,9 @@ module.exports = (pool) => {
 
   // Save saveFile - Salva arquivos no servidor
   router.post('/savefile',async function(req,res){
-    await shell.exec("node ./src/sshFTP.js");
+    const resultado  = await shell.exec("node ./src/sshFTP.js");
     console.log("Ja salvei os arquivos no servidor")
-    const resultado = await tsGenerate(req, res);
+    // const resultado = await tsGenerate(req, res);
     console.log(resultado)
     res.json({ message: resultado });
     
