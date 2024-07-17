@@ -34,9 +34,10 @@ module.exports = (pool) => {
   // Create - Salva apenas os dados que desejar no banco de dados mongoDB
  router.post('/create',async function(req,res){
 
-  const resultado = await createTS(req, res);
-  console.log(resultado)
-  res.json({ message: resultado });
+    await createTS(req, res);
+    const resultado = await tsGenerate(req, res);
+    console.log(resultado)
+    res.json({ message: resultado });
 
   }) 
 
