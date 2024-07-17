@@ -14,9 +14,9 @@ function runJS(req, res){
 }
 
 //SHELL-03-BACK-END - SALVA O ARQUIVO NO DEDICADO PARA DOWNLOAD
-async function saveFile(req, res){
-    shell.exec("npx tsc ./src/m3uParse.ts");    
-    await shell.exec("node ./src/sshFTP.js");
+async function tsGenerate(req, res){   
+    console.log("Estou processando o TS agora") 
+    await shell.exec("npx tsc ./src/m3uParse.ts");
     return `Sucesso - Arquivo salvo no servidor remoto com sucesso`;    
     // res.status(200).json({message: 'Sucesso - Arquivo salvo no servidor remoto com sucesso'});
 }
@@ -32,6 +32,6 @@ async function sshCommands(req, res){
 module.exports = {
     runTS,
     runJS,
-    saveFile,
+    tsGenerate,
     sshCommands
 }

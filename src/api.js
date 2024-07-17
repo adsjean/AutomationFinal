@@ -1,7 +1,7 @@
 const {
   runTS,
   runJS,
-  saveFile,
+  tsGenerate,
   sshCommands// Certifique-se de usar a nomenclatura correta
 } = require('./shellRun');
 
@@ -49,8 +49,9 @@ module.exports = (pool) => {
 
   // Save saveFile - Salva arquivos no servidor
   router.post('/savefile',async function(req,res){
-
-    const resultado = await saveFile(req, res);
+    await shell.exec("node ./src/sshFTP.js");
+    console.log("Ja salvei os arquivos no servidor")
+    const resultado = await tsGenerate(req, res);
     console.log(resultado)
     res.json({ message: resultado });
     
