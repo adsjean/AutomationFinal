@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(207, 255, 239);
+    color: rgb(58, 59, 28);
+}
+
+.btn{
+    color: white !important;
+    font-size: 1em !important;
+    font-weight: 700 !important;
+}
+
+.btn:hover {
+    color: rgb(0, 0, 0) !important;
+}
+
+button {
+    color: white !important;
+    font-size: 1em !important;
+}
+
+.fcc-btn:hover {
+    color: rgb(0, 0, 0) !important;
+}
+
+.resposta {
+    font-weight: 700 !important;
+    color: white;
+}
+
+.fcc-btn {
+    font-weight: 700 !important;
+    background-color: #199319;
+    color: white;
+    padding: 15px 25px;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,36 @@
+{
+  "name": "automationnodejs",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "file-saver": "^2.0.5",
+    "json-query": "^2.2.2",
+    "m3u-parser-generator": "^1.7.2",
+    "mongoose": "^8.5.0",
+    "mysql2": "^3.10.2",
+    "nodemon": "^3.1.4",
+    "remote-exec": "^0.0.3",
+    "shelljs": "^0.8.5",
+    "simple-ssh": "^1.1.1",
+    "ssh2-sftp-client": "^10.0.3"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20.14.10"
+  }
+}
