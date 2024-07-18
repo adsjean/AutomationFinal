@@ -145,7 +145,7 @@ function createTS(req, res) {
                 //transcopiler all to js and restart service fast
                 //shell.exec("npx tsc ./src/m3uParse.ts");
                 //await saveMongDB(req, res);
-                return [2 /*return*/, "Lista carregada com sucesso - Siga os passos pelos n\u00FAmeros"];
+                return [2 /*return*/, "Lista carregada - AGUARDE **(5)seg e siga os passos pelos n\u00FAmeros"];
                 // res.status(200).json({txtArea: txtArea, folderName: folderName});
             }
             catch (error) {

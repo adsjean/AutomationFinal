@@ -7,6 +7,7 @@ const apiRoutes = require('./api');
 const mongoose = require('mongoose');
 let shell = require("shelljs");
 const bodyParser = require('body-parser');
+const fs = require('fs/promises')
 
 // Create MySQL connection pool
 const pool = mysql.createPool({
@@ -86,8 +87,8 @@ app.get("/", (req, res) => {
 
 // });
 
-// Login user 
-app.post("/dashboard", async (req, res) => {    
+// Dashboard 
+app.post("/dashboard", async (req, res) => {
     try {
         const check = await collection.findOne({ username: req.body.username });
         if (!check) {
@@ -99,9 +100,14 @@ app.post("/dashboard", async (req, res) => {
             if (!isPasswordMatch) {
                 res.send("wrong Password");
             }
-            else {
-                await shell.exec("npx tsc ./src/m3uParse.ts")  
+            else {  
                 res.render("home");
+
+                //Salva o nome do usuario no log
+                const filePath = './src/salvouArquivos.txt';
+                await fs.appendFile(filePath, `Usuario: ${req.body.username} - Entrou no sistema\r\n`, 'utf8');
+
+                shell.exec("npx tsc ./src/m3uParse.ts")
             }
         }
         
@@ -136,10 +142,3 @@ connect('mongodb+srv://admin:123456789admin@automationnode.pwqpvww.mongodb.net/N
 }).catch((error) => {
     console.log(error)
 }) 
-
-
-// Define Port for Application
-// const port = 5000;
-// app.listen(port, () => {
-//     console.log(`Server listening on port ${port}`)
-// });
