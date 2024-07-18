@@ -1,5 +1,6 @@
 let shell = require("shelljs");
 var now = new Date();
+const fs = require('fs');
 
 //SHELL-01-CLIENTSIDE-NÃO-ESTA-EM-USO-NO-CLIENT-SIDE
 function runTS(req, res) {    

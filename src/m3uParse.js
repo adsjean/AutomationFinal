@@ -143,7 +143,7 @@ function createTS(req, res) {
                 // //remove url.txt and filenames.txt
                 eraseFiles(req, res);
                 //transcopiler all to js and restart service fast
-                shell.exec("npx tsc ./src/m3uParse.ts");
+                //shell.exec("npx tsc ./src/m3uParse.ts");
                 //await saveMongDB(req, res);
                 return [2 /*return*/, "Lista carregada com sucesso - Siga os passos pelos n\u00FAmeros"];
                 // res.status(200).json({txtArea: txtArea, folderName: folderName});
