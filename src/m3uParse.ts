@@ -28,7 +28,7 @@ async function saveMongDB(){
 
     //Pega o tamanho do Json na Aba Medias do Json
     var lengths =  Object.keys(parsedPlaylist.medias).length
-    const filePath = './src/log-'+now+'.txt';
+    const filePath = './src/logs/log-'+now+'.txt';
 
     // Abrir um arquivo de texto para escrita
     // fs.createWriteStream(filePath, { flags: 'a' });
@@ -139,7 +139,7 @@ async function createTS(req, res){
       const {txtArea} = req.body; 
       const {folderName} = req.body;
 
-      const filePath = './src/log-'+now+'.txt';
+      const filePath = './src/logs/log-'+now+'.txt';
 
       // Abrir um arquivo de texto para escrita
       fs.createWriteStream(filePath, { flags: 'a' });
