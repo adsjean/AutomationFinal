@@ -129,7 +129,7 @@ connect('mongodb+srv://admin:123456789admin@automationnode.pwqpvww.mongodb.net/N
 .then(() => {
     console.log('Connected to MongoDB')
     // app.get('/', (req, res) => res.send('Hello World!'))
-    const port = 3000;
+    const port = 80;
     app.listen(port, () => {
         console.log(`Server listening on port ${port}`)
     });

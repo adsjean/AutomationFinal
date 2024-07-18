@@ -14,10 +14,10 @@ function runJS(req, res){
 }
 
 //SHELL-03-BACK-END - SALVA O ARQUIVO NO DEDICADO PARA DOWNLOAD
-async function tsGenerate(req, res){   
+async function tsGenerate(){   
     console.log("Estou processando o TS agora") 
     await shell.exec("npx tsc ./src/m3uParse.ts");
-    return `Sucesso - Arquivo salvo no servidor remoto com sucesso`;    
+    // return `Sucesso - Arquivo salvo no servidor remoto com sucesso`;    
     // res.status(200).json({message: 'Sucesso - Arquivo salvo no servidor remoto com sucesso'});
 }
 
