@@ -134,7 +134,7 @@ async function createTS(req, res){
       //shell.exec("npx tsc ./src/m3uParse.ts");
       //await saveMongDB(req, res);
       
-      return `Lista carregada com sucesso - Siga os passos pelos números`;
+      return `Lista carregada - AGUARDE **(5)seg e siga os passos pelos números`;
       // res.status(200).json({txtArea: txtArea, folderName: folderName});
 
 
