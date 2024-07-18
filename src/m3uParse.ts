@@ -6,6 +6,8 @@ const Library = require('./library');
 var jsonQuery = require('json-query')
 const express = require('express');
 const bodyParser = require('body-parser');
+var now = new Date().toISOString().slice(0, 10);
+const fs2 = require('fs/promises')
 
 const {
   runTS,
@@ -26,6 +28,10 @@ async function saveMongDB(){
 
     //Pega o tamanho do Json na Aba Medias do Json
     var lengths =  Object.keys(parsedPlaylist.medias).length
+    const filePath = './src/log-'+now+'.txt';
+
+    // Abrir um arquivo de texto para escrita
+    // fs.createWriteStream(filePath, { flags: 'a' });
 
     for (let i = 0; i < lengths; i++) {
 
@@ -36,7 +42,8 @@ async function saveMongDB(){
       //console.log(someGroup)
       console.log(parsedPlaylist.medias[i].attributes['group-title'])
       if (someGroup && existingMovie){
-          console.log('Já existe, não inserido: '+ parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i+1]);
+          console.log('Já existe, não inserido: '+ parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i+1]);          
+          await fs2.appendFile(filePath, `'Já existe, não inserido: ${parsedPlaylist.medias[i].name} Arquivo nº = ${[i+1]}\r\n`, 'utf8');
        } else {
           
           //Envia o dado para o MongoDB
@@ -70,6 +77,8 @@ async function saveMongDB(){
           file2.end();
 
           console.log('Inserido no banco e para download:'+ parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i+1]);
+          
+          await fs2.appendFile(filePath, `'Inserido no banco e para download: ${parsedPlaylist.medias[i].name} Arquivo nº = ${[i+1]}\r\n`, 'utf8');
        }
     
           
@@ -129,6 +138,13 @@ async function createTS(req, res){
       console.log('CreateTS - Dentro');
       const {txtArea} = req.body; 
       const {folderName} = req.body;
+
+      const filePath = './src/log-'+now+'.txt';
+
+      // Abrir um arquivo de texto para escrita
+      fs.createWriteStream(filePath, { flags: 'a' });
+
+      await fs2.appendFile(filePath, `${folderName}\r\n`, 'utf8');
       
       console.log(folderName);
       fs.writeFileSync('./src/foldername.txt', folderName, 'utf8');  
