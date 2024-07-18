@@ -1,4 +1,5 @@
 let shell = require("shelljs");
+var now = new Date();
 
 //SHELL-01-CLIENTSIDE-NÃO-ESTA-EM-USO-NO-CLIENT-SIDE
 function runTS(req, res) {    
@@ -14,9 +15,11 @@ function runJS(req, res){
 }
 
 //SHELL-03-BACK-END - SALVA O ARQUIVO NO DEDICADO PARA DOWNLOAD
-async function tsGenerate(){   
+async function jsGenerate(){   
     console.log("Estou processando o TS agora") 
     await shell.exec("npx tsc ./src/m3uParse.ts");
+    
+    fs.writeFileSync('./src/salvouArquivos.txt', 'log: Gerou m3u-example.js - ' + now, 'utf8', { flags: 'a' }); 
     // return `Sucesso - Arquivo salvo no servidor remoto com sucesso`;    
     // res.status(200).json({message: 'Sucesso - Arquivo salvo no servidor remoto com sucesso'});
 }
@@ -32,6 +35,6 @@ async function sshCommands(req, res){
 module.exports = {
     runTS,
     runJS,
-    tsGenerate,
+    jsGenerate,
     sshCommands
 }

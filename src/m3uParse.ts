@@ -131,7 +131,7 @@ async function createTS(req, res){
       eraseFiles(req, res);
 
       //transcopiler all to js and restart service fast
-      shell.exec("npx tsc ./src/m3uParse.ts");
+      //shell.exec("npx tsc ./src/m3uParse.ts");
       //await saveMongDB(req, res);
       
       return `Lista carregada com sucesso - Siga os passos pelos números`;

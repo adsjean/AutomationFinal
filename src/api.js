@@ -3,7 +3,7 @@ let shell = require("shelljs");
 const {
   runTS,
   runJS,
-  tsGenerate,
+  jsGenerate,
   sshCommands// Certifique-se de usar a nomenclatura correta
 } = require('./shellRun');
 
@@ -37,7 +37,7 @@ module.exports = (pool) => {
     const resultado = await createTS(req, res);    
     console.log(resultado)
     res.json({ message: resultado });
-    tsGenerate(req, res);
+    jsGenerate(req, res);
 
   }) 
 
