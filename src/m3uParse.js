@@ -49,7 +49,7 @@ var _a = require('./shellRun'), runTS = _a.runTS, runJS = _a.runJS, saveFile = _
 //Salva no mongoDB - Ja esta a funcionar, falta apenas selecionar pelos dados que desejar
 function saveMongDB() {
     return __awaiter(this, void 0, void 0, function () {
-        var parsedPlaylist, lengths, i, library, file, linhaURL, letra, file2, linhaNomes, letra, error_1;
+        var parsedPlaylist, lengths, i, existingMovie, someGroup, library, file, linhaURL, letra, file2, linhaNomes, letra, error_1;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -57,14 +57,25 @@ function saveMongDB() {
                     parsedPlaylist = m3u_parser_generator_1.M3uParser.parse(m3u_example_1.m3uExample);
                     _b.label = 1;
                 case 1:
-                    _b.trys.push([1, 6, , 7]);
+                    _b.trys.push([1, 9, , 10]);
                     lengths = Object.keys(parsedPlaylist.medias).length;
                     i = 0;
                     _b.label = 2;
                 case 2:
-                    if (!(i < lengths)) return [3 /*break*/, 5];
-                    return [4 /*yield*/, Library.create(parsedPlaylist.medias[i])];
+                    if (!(i < lengths)) return [3 /*break*/, 8];
+                    return [4 /*yield*/, Library.findOne({ name: parsedPlaylist.medias[i].name })];
                 case 3:
+                    existingMovie = _b.sent();
+                    return [4 /*yield*/, Library.findOne({ "attributes.group-title": parsedPlaylist.medias[i].attributes['group-title'] })];
+                case 4:
+                    someGroup = _b.sent();
+                    //console.log(someGroup)
+                    console.log(parsedPlaylist.medias[i].attributes['group-title']);
+                    if (!(someGroup && existingMovie)) return [3 /*break*/, 5];
+                    console.log('Já existe, não inserido: ' + parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i + 1]);
+                    return [3 /*break*/, 7];
+                case 5: return [4 /*yield*/, Library.create(parsedPlaylist.medias[i])];
+                case 6:
                     library = _b.sent();
                     file = fs.createWriteStream('./src/urls.txt', { flags: 'a' });
                     linhaURL = parsedPlaylist.medias[i].location;
@@ -82,18 +93,19 @@ function saveMongDB() {
                     file2.write("".concat(linhaNomes, "\n"));
                     // Fechar o arquivo
                     file2.end();
-                    _b.label = 4;
-                case 4:
+                    console.log('Inserido no banco e para download:' + parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i + 1]);
+                    _b.label = 7;
+                case 7:
                     i++;
                     return [3 /*break*/, 2];
-                case 5:
-                    console.log('Acima tem a lista dos filmes que não foram inseridos no banco de dados!');
+                case 8:
+                    console.log('--- CONTROLE OLHA ACIMA OU NO ARQUIVO DE LOG ---');
                     return [2 /*return*/, "Filmes n\u00E3o duplicados foram inseridos no banco de dados - verifique o console"];
-                case 6:
+                case 9:
                     error_1 = _b.sent();
                     console.log(error_1.message);
                     return [2 /*return*/, ({ message: 'Não inserido no banco de dados' })];
-                case 7: return [2 /*return*/];
+                case 10: return [2 /*return*/];
             }
         });
     });

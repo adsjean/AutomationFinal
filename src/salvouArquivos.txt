@@ -1,0 +1,23 @@
+Usuario: anonymous - Entrou no sistema
+Pasta: /pt/novidades - log: Lista Carregada - Data: Thu Jul 18 2024 10:28:00 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 1234 - log: Lista Carregada - Data: Thu Jul 18 2024 10:28:17 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: asdasdad - log: Lista Carregada - Data: Thu Jul 18 2024 10:37:54 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 00000 - log: Lista Carregada - Data: Thu Jul 18 2024 10:38:25 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: 00000 - log: Lista Carregada - Data: Thu Jul 18 2024 10:47:51 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: 1111 - log: Lista Carregada - Data: Thu Jul 18 2024 10:50:33 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 12312313 - log: Lista Carregada - Data: Thu Jul 18 2024 10:54:21 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 000 - log: Lista Carregada - Data: Thu Jul 18 2024 10:57:30 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 0000 - log: Lista Carregada - Data: Thu Jul 18 2024 11:01:12 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 0000 - log: Lista Carregada - Data: Thu Jul 18 2024 11:07:24 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 11111 - log: Lista Carregada - Data: Thu Jul 18 2024 11:10:16 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdada - log: Lista Carregada - Data: Thu Jul 18 2024 11:15:49 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasd - log: Lista Carregada - Data: Thu Jul 18 2024 11:23:08 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: /adasd - log: Lista Carregada - Data: Thu Jul 18 2024 11:23:40 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: qweq - log: Lista Carregada - Data: Thu Jul 18 2024 11:25:01 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: 0000 - log: Lista Carregada - Data: Thu Jul 18 2024 11:34:59 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asda - log: Lista Carregada - Data: Thu Jul 18 2024 11:38:34 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdada - log: Lista Carregada - Data: Thu Jul 18 2024 11:39:24 GMT+0100 (Hora de verão da Europa Ocidental)

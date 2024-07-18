@@ -30,6 +30,11 @@ const librarySchema = mongoose.Schema(
              
     },
     {
+        "namePasta": {
+            "type": "String"
+        }
+    },
+    {
         timestamps: true
     }
 )

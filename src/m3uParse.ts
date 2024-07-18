@@ -30,11 +30,15 @@ async function saveMongDB(){
     for (let i = 0; i < lengths; i++) {
 
       // Check if the username already exists in the database
-      // const existingMovie = await Library.findOne({ name: parsedPlaylist.medias[i].name });
-      // if (existingMovie) {
-      //   console.log('Filme não inserido:'+ parsedPlaylist.medias[i].name + ' - Verifique o nome');
-      // } else {
-    
+      const existingMovie = await Library.findOne({ name: parsedPlaylist.medias[i].name });
+      const someGroup = await Library.findOne({ "attributes.group-title": parsedPlaylist.medias[i].attributes['group-title'] });
+      
+      //console.log(someGroup)
+      console.log(parsedPlaylist.medias[i].attributes['group-title'])
+      if (someGroup && existingMovie){
+          console.log('Já existe, não inserido: '+ parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i+1]);
+       } else {
+          
           //Envia o dado para o MongoDB
           const library = await Library.create(parsedPlaylist.medias[i]);
 
@@ -64,11 +68,16 @@ async function saveMongDB(){
     
           // Fechar o arquivo
           file2.end();
+
+          console.log('Inserido no banco e para download:'+ parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i+1]);
+       }
+    
+          
       // }
 
     }   
 
-    console.log('Acima tem a lista dos filmes que não foram inseridos no banco de dados!');
+    console.log('--- CONTROLE OLHA ACIMA OU NO ARQUIVO DE LOG ---');
     
     return `Filmes não duplicados foram inseridos no banco de dados - verifique o console`;
     
