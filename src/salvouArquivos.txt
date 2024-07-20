@@ -53,3 +53,40 @@ Pasta: asdads - log: Lista Carregada - Data: Thu Jul 18 2024 13:30:29 GMT+0100 (
 Pasta: 1 - log: Lista Carregada - Data: Thu Jul 18 2024 13:33:32 GMT+0100 (Hora de verão da Europa Ocidental)
 Pasta: 2 - log: Lista Carregada - Data: Thu Jul 18 2024 13:34:05 GMT+0100 (Hora de verão da Europa Ocidental)
 Pasta: /pt/novidades - log: Lista Carregada - Data: Thu Jul 18 2024 13:34:46 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: qweqw - log: Lista Carregada - Data: Sat Jul 20 2024 09:40:27 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: br/test - log: Lista Carregada - Data: Sat Jul 20 2024 10:02:16 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: /br/test - log: Lista Carregada - Data: Sat Jul 20 2024 10:13:29 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: /br/test - log: Lista Carregada - Data: Sat Jul 20 2024 10:14:44 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: /br/test - log: Lista Carregada - Data: Sat Jul 20 2024 10:23:59 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: /br/test - log: Lista Carregada - Data: Sat Jul 20 2024 11:16:27 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Pasta: /pt/acao - log: Lista Carregada - Data: Sat Jul 20 2024 12:05:14 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: /pt/acao - log: Lista Carregada - Data: Sat Jul 20 2024 12:10:11 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: /pt/acao - log: Lista Carregada - Data: Sat Jul 20 2024 12:23:19 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: test - log: Lista Carregada - Data: Sat Jul 20 2024 12:23:42 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdad - log: Lista Carregada - Data: Sat Jul 20 2024 12:24:39 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: adasda - log: Lista Carregada - Data: Sat Jul 20 2024 12:31:20 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdsad - log: Lista Carregada - Data: Sat Jul 20 2024 12:31:41 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdads - log: Lista Carregada - Data: Sat Jul 20 2024 12:33:33 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasdad - log: Lista Carregada - Data: Sat Jul 20 2024 12:34:12 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdadsa - log: Lista Carregada - Data: Sat Jul 20 2024 12:34:27 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdsads - log: Lista Carregada - Data: Sat Jul 20 2024 12:42:35 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasdsad - log: Lista Carregada - Data: Sat Jul 20 2024 12:42:59 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdadasdsa - log: Lista Carregada - Data: Sat Jul 20 2024 12:44:28 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asda - log: Lista Carregada - Data: Sat Jul 20 2024 12:44:44 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasd - log: Lista Carregada - Data: Sat Jul 20 2024 12:51:19 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdadsa - log: Lista Carregada - Data: Sat Jul 20 2024 12:51:38 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdadad - log: Lista Carregada - Data: Sat Jul 20 2024 12:54:54 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasd - log: Lista Carregada - Data: Sat Jul 20 2024 12:56:21 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdasda - log: Lista Carregada - Data: Sat Jul 20 2024 12:56:37 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: adasda - log: Lista Carregada - Data: Sat Jul 20 2024 12:58:28 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdsada - log: Lista Carregada - Data: Sat Jul 20 2024 12:58:41 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: asdsada - log: Lista Carregada - Data: Sat Jul 20 2024 12:59:35 GMT+0100 (Hora de verão da Europa Ocidental)

@@ -1,8 +1,8 @@
 let shell = require("shelljs");
 
 const {
-  runTS,
-  runJS,
+  // runTS,
+  // runJS,
   jsGenerate,
   sshCommands// Certifique-se de usar a nomenclatura correta
 } = require('./shellRun');
@@ -21,12 +21,9 @@ const bodyParser = require('body-parser');
 
 module.exports = (pool) => {  
   // Magic happen RunTS(POST) e RUNJS(GET) - Arquivos essenciais para a aplicação
-  router.post('/magic',  (req, res) => runTS(req, res)); //Gera o arquivo .JS//SHELL-Proteger
+  // router.post('/magic',  (req, res) => runTS(req, res)); //Gera o arquivo .JS//SHELL-Proteger
   //router.get('/magic',  (req, res) => runJS(req, res)); //Gera o Json do file m3u-example//SHELL-Proteger
 
-  // To TS - Recebe o txtArea e cria o m3u-example.TS
-  // router.post('/create', (req, res) => createTS(req, res)); // Gera o file m3u-example  
-  
   // API Json a ser mostrada na tela - Usada para capturar dados da lista como URL, Nome, Logo, etc
   router.get('/getjson', (req, res) => exportM3uToJson(req, res));
  
@@ -69,9 +66,5 @@ module.exports = (pool) => {
     
   })
   
-  // Acesso ao servidor remoto - Salva arquivo e Roda comandos no SSH
-  // router.post('/saveFile', (req, res) => saveFile(req, res));
-  // router.post('/sshCommands', (req, res) => sshCommands(req, res));
-
   return router;
 };

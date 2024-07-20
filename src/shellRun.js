@@ -33,13 +33,13 @@ async function jsGenerate(req, res){
 //SHELL-04-BACK-END - RODA COMANDOS NO SERVIDOR REMOTO
 async function sshCommands(req, res){
     await shell.exec("node ./src/sshCommands.js");
-    return `**Entre via SSH e rode o código "./download_and_rename.sh" na pasta donde esta o arquivo`; 
+    return `Iniciado o download automaticamente dentro do servidor. **Para verificar digite "pm2 status ou pm2 log id"`; 
 }
 
 
 module.exports = {
-    runTS,
-    runJS,
+    // runTS,
+    // runJS,
     jsGenerate,
     sshCommands
 }

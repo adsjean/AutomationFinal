@@ -8,10 +8,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var now = new Date().toISOString().slice(0, 10);
 const fs2 = require('fs/promises')
+const nReadlines = require('n-readlines');
+const broadbandLines = new nReadlines('./src/logado.txt');
 
 const {
-  runTS,
-  runJS,
+  // runTS,
+  // runJS,
   saveFile,
   sshCommands// Certifique-se de usar a nomenclatura correta
 } = require('./shellRun');
@@ -30,8 +32,15 @@ async function saveMongDB(){
     var lengths =  Object.keys(parsedPlaylist.medias).length
     const filePath = './src/logs/log-'+now+'.txt';
 
-    // Abrir um arquivo de texto para escrita
-    // fs.createWriteStream(filePath, { flags: 'a' });
+    let line;
+    let username;
+    let lineNumber = 1;
+
+    while (line = broadbandLines.next()) {
+        console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
+        username = line.toString('ascii');
+        lineNumber++;
+    }
 
     for (let i = 0; i < lengths; i++) {
 
@@ -50,7 +59,7 @@ async function saveMongDB(){
           const library = await Library.create(parsedPlaylist.medias[i]);
 
           // Abrir um arquivo de texto para escrita
-          const file = fs.createWriteStream('./src/urls.txt', { flags: 'a' });
+          const file = fs.createWriteStream('./src/'+username+'/urls.txt', { flags: 'a' });
 
           var linhaURL = parsedPlaylist.medias[i].location;
           var letra = linhaURL.split('""');
@@ -63,7 +72,7 @@ async function saveMongDB(){
           file.end();
 
           // Abrir um arquivo de texto para escrita
-          const file2 = fs.createWriteStream('./src/filenames.txt', { flags: 'a' });
+          const file2 = fs.createWriteStream('./src/'+username+'/filenames.txt', { flags: 'a' });
           
           //split de variavel indefinida necessario if/else ??
           var linhaNomes = parsedPlaylist.medias[i].name ?? "Nome não encontrado";
@@ -88,31 +97,19 @@ async function saveMongDB(){
 
     console.log('--- CONTROLE OLHA ACIMA OU NO ARQUIVO DE LOG ---');
     
-    return `Filmes não duplicados foram inseridos no banco de dados - verifique o console`;
-    
-    // await res.json({message: 'Inserido no banco de dados com sucesso'})
-    // await res.status(200).render("home");
-    // await res.status(200).json({message: 'Inserido no banco de dados com sucesso'});  
+    return `Filmes não duplicados foram inseridos no banco de dados - verifique o console`; 
+
 
   } catch (error) {
 
     console.log(error.message);
     return ({message: 'Não inserido no banco de dados'});
-    // res.status(500).json({message: error.message})
 
   }
   
 }
 
-async function eraseFiles(req, res) {
-
-  fs.truncate('./src/urls.txt', 0, function(){console.log('done')})
-  fs.truncate('./src/filenames.txt', 0, function(){console.log('done')})
-  
-}
-
-//Salva MongoDB e mostra Json
-//Save MongoDB and show Json on body.
+//Show Json on body.
 async function exportM3uToJson(req, res) {
     try {
 
@@ -141,27 +138,32 @@ async function createTS(req, res){
 
       const filePath = './src/logs/log-'+now+'.txt';
 
+      let line;
+      let username;
+      let lineNumber = 1;
+
+      while (line = broadbandLines.next()) {
+          console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
+          username = line.toString('ascii');
+          lineNumber++;
+      }
+
+      // //remove url.txt and filenames.txt
+      fs.truncate('./src/'+username+'/urls.txt', 0, function(){console.log('done')})
+      fs.truncate('./src/'+username+'/filenames.txt', 0, function(){console.log('done')})
+
       // Abrir um arquivo de texto para escrita
       fs.createWriteStream(filePath, { flags: 'a' });
 
       await fs2.appendFile(filePath, `${folderName}\r\n`, 'utf8');
       
       console.log(folderName);
-      fs.writeFileSync('./src/foldername.txt', folderName, 'utf8');  
+      fs.writeFileSync('./src/'+username+'/foldername.txt', folderName, 'utf8');  
       
       console.log(txtArea);
-      fs.writeFileSync('./src/m3u-example.ts', txtArea, 'utf8');
-
-      // //remove url.txt and filenames.txt
-      eraseFiles(req, res);
-
-      //transcopiler all to js and restart service fast
-      //shell.exec("npx tsc ./src/m3uParse.ts");
-      //await saveMongDB(req, res);
+      fs.writeFileSync('./src/m3u-example.ts', txtArea, 'utf8');      
       
       return `Lista carregada - AGUARDE **(5)seg e siga os passos pelos números`;
-      // res.status(200).json({txtArea: txtArea, folderName: folderName});
-
 
     } catch (error) {
 
@@ -175,6 +177,5 @@ async function createTS(req, res){
 module.exports = {
     exportM3uToJson,
     createTS,
-    saveMongDB,
-    eraseFiles
+    saveMongDB
 }

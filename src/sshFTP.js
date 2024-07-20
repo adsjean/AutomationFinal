@@ -1,5 +1,7 @@
 const SftpClient = require('ssh2-sftp-client');
 const sftp = new SftpClient();
+const nReadlines = require('n-readlines');
+const broadbandLines = new nReadlines('./src/logado.txt');
 
 exec();
 
@@ -14,11 +16,22 @@ function exec(){
     
     sftp.connect(config)
         .then(() => {
+
+            let line;
+            let username;
+            let lineNumber = 1;
+        
+            while (line = broadbandLines.next()) {
+                // console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
+                username = line.toString('ascii');
+                lineNumber++;
+            }
+
             // Upload the file
-            sftp.put('./src/foldername.txt', '/home/content/foldername.txt', false);
-            sftp.put('./src/urls.txt', '/home/content/urls.txt', false);
-            sftp.put('./src/download_and_rename.sh', '/home/content/download_and_rename.sh', false);
-            return sftp.put('./src/filenames.txt', '/home/content/filenames.txt', false);
+            sftp.put('./src/'+username+'/foldername.txt', '/home/content/'+username+'/foldername.txt', false);
+            sftp.put('./src/'+username+'/urls.txt', '/home/content/'+username+'/urls.txt', false);
+            sftp.put('./src/download_and_rename.sh', '/home/content/'+username+'/download_and_rename_'+username+'.sh', false);
+            return sftp.put('./src/'+username+'/filenames.txt', '/home/content/'+username+'/filenames.txt', false);
         })
         .then(() => {
             // alert('Arquivos salvo no servidor com sucesso');

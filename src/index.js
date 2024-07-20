@@ -106,7 +106,8 @@ app.post("/dashboard", async (req, res) => {
                 //Salva o nome do usuario no log
                 const filePath = './src/salvouArquivos.txt';
                 await fs.appendFile(filePath, `Usuario: ${req.body.username} - Entrou no sistema\r\n`, 'utf8');
-
+                fs.writeFile('./src/logado.txt', req.body.username);
+                
                 shell.exec("npx tsc ./src/m3uParse.ts")
             }
         }
