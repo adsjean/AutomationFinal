@@ -1,6 +1,7 @@
 let shell = require("shelljs");
 var now = new Date();
 const fs = require('fs/promises')
+const { Worker } = require("node:worker_threads");
 
 //SHELL-01-CLIENTSIDE-NÃO-ESTA-EM-USO-NO-CLIENT-SIDE
 function runTS(req, res) {    
@@ -25,15 +26,12 @@ async function jsGenerate(req, res){
     
     const filePath = './src/salvouArquivos.txt';
     await fs.appendFile(filePath, `Pasta: ${folderName} - log: Lista Carregada - Data: ${now}\r\n`, 'utf8');
-    
-    //Reinicia o pm2 dentro do servidor remoto
-    await shell.exec("pm2 restart automation-app");
 }
 
 //SHELL-04-BACK-END - RODA COMANDOS NO SERVIDOR REMOTO
 async function sshCommands(req, res){
-    await shell.exec("node ./src/sshCommands.js");
-    return `Iniciado o download automaticamente dentro do servidor. **Para verificar digite "pm2 status ou pm2 log id"`; 
+    const worker = new Worker("./src/sshCommands.js");    
+    return `Download sendo execultado dentro do servidor remoto. Confira acessado por FTP ou SSH`; 
 }
 
 

@@ -1,42 +1,53 @@
-var rexec = require('remote-exec');
-const SSH = require('simple-ssh');
+const { Client } = require('ssh2');
 const nReadlines = require('n-readlines');
 const broadbandLines = new nReadlines('./src/logado.txt');
-console.log("Estamos aqui!!");
 
-exec();
+let line;
+let usernameLogado;
+let lineNumber = 1;
 
-function exec() {
-    console.log("Entramos!!");
-    var connection_options = {
-    port: 22,
-    username: 'root',
-    password: '07o560Hvx2QknyC6t3h'
-    };
+while (line = broadbandLines.next()) {
+    console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
+    usernameLogado = line.toString('ascii');
+    lineNumber++;
+}
 
-    let line;
-    let username;
-    let lineNumber = 1;
+const conn = new Client();
+const username = usernameLogado; // Example username
+const host = '67.211.222.190';
+const password = 'Amorsodemae2016@';
 
-    while (line = broadbandLines.next()) {
-        console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
-        username = line.toString('ascii');
-        lineNumber++;
+conn.on('ready', (req, res) => {
+  console.log('Client :: ready');
+  conn.exec(`cd /home/st49935/public_html/content/4TB/${username}/ && chmod +x download_and_rename_${username}.sh && nohup ./download_and_rename_${username}.sh > output.log `, (err, stream) => {
+    sendResponse("Command executing in background.");
+    if (err) {
+        console.error("Execution error:", err);
+        conn.end();
+        sendResponse(err.message);
+        return;
     }
 
-    var hosts = [
-        '144.217.252.65'
-    ];
-
-    var cmds = [
-     'cd /home/content/'+username+'/ && chmod +x download_and_rename_'+username+'.sh && pm2 start download_and_rename_'+username+'.sh' 
-    ];
-
-    rexec(hosts, cmds, connection_options, function(err){
-        if(err){
-            console.log(err);
-        }else{
-         console.log("Success!!");
-        }
+    stream.on('close', (code, signal) => {
+        console.log(`Stream :: close :: code: ${code}, signal: ${signal}`);
+        conn.end();
+        sendResponse("Command executed in background Successfully.");
+      }).on('data', (data) => {
+        console.log('STDOUT: ' + data);
+      }).stderr.on('data', (data) => {
+        console.log('STDERR: ' + data);
+      });
     });
-};
+
+}).connect({
+  host,
+  port: 22,
+  username: 'st49935',
+  password,
+});
+
+function sendResponse(response) {
+    // Implement this function to send a response back to the client.
+    // This could be an HTTP response, a message queue update, etc.
+    console.log(response);
+  }

@@ -8,10 +8,10 @@ exec();
 function exec(){
 
     const config = {
-        host: '144.217.252.65',
+        host: '67.211.222.190',
         port: 22,
-        username: 'root',
-        password: '07o560Hvx2QknyC6t3h'  
+        username: 'st49935',
+        password: 'Amorsodemae2016@'  
     };
     
     sftp.connect(config)
@@ -28,10 +28,10 @@ function exec(){
             }
 
             // Upload the file
-            sftp.put('./src/'+username+'/foldername.txt', '/home/content/'+username+'/foldername.txt', false);
-            sftp.put('./src/'+username+'/urls.txt', '/home/content/'+username+'/urls.txt', false);
-            sftp.put('./src/download_and_rename.sh', '/home/content/'+username+'/download_and_rename_'+username+'.sh', false);
-            return sftp.put('./src/'+username+'/filenames.txt', '/home/content/'+username+'/filenames.txt', false);
+            sftp.put('./src/'+username+'/foldername.txt', '/home/st49935/public_html/content/4TB/'+username+'/foldername.txt', false);
+            sftp.put('./src/'+username+'/urls.txt', '/home/st49935/public_html/content/4TB/'+username+'/urls.txt', false);
+            sftp.put('./src/download_and_rename.sh', '/home/st49935/public_html/content/4TB/'+username+'/download_and_rename_'+username+'.sh', false);
+            return sftp.put('./src/'+username+'/filenames.txt', '/home/st49935/public_html/content/4TB/'+username+'/filenames.txt', false);
         })
         .then(() => {
             // alert('Arquivos salvo no servidor com sucesso');

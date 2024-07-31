@@ -21,7 +21,7 @@ mapfile -t foldername < foldername.txt
 
 
 # Create a directory to store downloaded files
-DOWNLOAD_DIR="/home/content${foldername[$1]}"
+DOWNLOAD_DIR="/home/st49935/public_html/content/4TB${foldername[$1]}"
 mkdir -p $DOWNLOAD_DIR
 
 # Read URLs and filenames into arrays

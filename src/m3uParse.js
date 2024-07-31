@@ -36,6 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a = require('./shellRun'), saveFile = _a.saveFile, sshCommands = _a.sshCommands // Certifique-se de usar a nomenclatura correta
+;
 var m3u_parser_generator_1 = require("m3u-parser-generator");
 var m3u_example_1 = require("./m3u-example");
 var fs = require("fs");
@@ -48,15 +50,10 @@ var now = new Date().toISOString().slice(0, 10);
 var fs2 = require('fs/promises');
 var nReadlines = require('n-readlines');
 var broadbandLines = new nReadlines('./src/logado.txt');
-var _a = require('./shellRun'), 
-// runTS,
-// runJS,
-saveFile = _a.saveFile, sshCommands = _a.sshCommands // Certifique-se de usar a nomenclatura correta
-;
 //Salva no mongoDB - Ja esta a funcionar, falta apenas selecionar pelos dados que desejar
 function saveMongDB() {
     return __awaiter(this, void 0, void 0, function () {
-        var parsedPlaylist, lengths, filePath, line, username, lineNumber, i, existingMovie, someGroup, library, file, linhaURL, letra, file2, linhaNomes, letra, error_1;
+        var parsedPlaylist, lengths, line, username, lineNumber, i, existingMovie, library, file, linhaURL, letra, file2, linhaNomes, letra, error_1;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -64,37 +61,26 @@ function saveMongDB() {
                     parsedPlaylist = m3u_parser_generator_1.M3uParser.parse(m3u_example_1.m3uExample);
                     _b.label = 1;
                 case 1:
-                    _b.trys.push([1, 11, , 12]);
+                    _b.trys.push([1, 8, , 9]);
                     lengths = Object.keys(parsedPlaylist.medias).length;
-                    filePath = './src/logs/log-' + now + '.txt';
                     line = void 0;
                     username = void 0;
                     lineNumber = 1;
                     while (line = broadbandLines.next()) {
-                        console.log("Line ".concat(lineNumber, " has: ").concat(line.toString('ascii')));
+                        //console.log(`Line ${lineNumber} has: ${line.toString('ascii')}`);
                         username = line.toString('ascii');
                         lineNumber++;
                     }
                     i = 0;
                     _b.label = 2;
                 case 2:
-                    if (!(i < lengths)) return [3 /*break*/, 10];
-                    return [4 /*yield*/, Library.findOne({ name: parsedPlaylist.medias[i].name })];
+                    if (!(i < lengths)) return [3 /*break*/, 6];
+                    return [4 /*yield*/, Library.findOne({ location: parsedPlaylist.medias[i].location })];
                 case 3:
                     existingMovie = _b.sent();
-                    return [4 /*yield*/, Library.findOne({ "attributes.group-title": parsedPlaylist.medias[i].attributes['group-title'] })];
+                    if (!!existingMovie) return [3 /*break*/, 5];
+                    return [4 /*yield*/, Library.create(parsedPlaylist.medias[i])];
                 case 4:
-                    someGroup = _b.sent();
-                    //console.log(someGroup)
-                    console.log(parsedPlaylist.medias[i].attributes['group-title']);
-                    if (!(someGroup && existingMovie)) return [3 /*break*/, 6];
-                    console.log('Já existe, não inserido: ' + parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i + 1]);
-                    return [4 /*yield*/, fs2.appendFile(filePath, "'J\u00E1 existe, n\u00E3o inserido: ".concat(parsedPlaylist.medias[i].name, " Arquivo n\u00BA = ").concat([i + 1], "\r\n"), 'utf8')];
-                case 5:
-                    _b.sent();
-                    return [3 /*break*/, 9];
-                case 6: return [4 /*yield*/, Library.create(parsedPlaylist.medias[i])];
-                case 7:
                     library = _b.sent();
                     file = fs.createWriteStream('./src/' + username + '/urls.txt', { flags: 'a' });
                     linhaURL = parsedPlaylist.medias[i].location;
@@ -112,40 +98,22 @@ function saveMongDB() {
                     file2.write("".concat(linhaNomes, "\n"));
                     // Fechar o arquivo
                     file2.end();
-                    console.log('Inserido no banco e para download:' + parsedPlaylist.medias[i].name + ' Arquivo nº = ' + [i + 1]);
-                    return [4 /*yield*/, fs2.appendFile(filePath, "'Inserido no banco e para download: ".concat(parsedPlaylist.medias[i].name, " Arquivo n\u00BA = ").concat([i + 1], "\r\n"), 'utf8')];
-                case 8:
-                    _b.sent();
-                    _b.label = 9;
-                case 9:
+                    _b.label = 5;
+                case 5:
                     i++;
                     return [3 /*break*/, 2];
-                case 10:
-                    console.log('--- CONTROLE OLHA ACIMA OU NO ARQUIVO DE LOG ---');
+                case 6: return [4 /*yield*/, shell.exec("npx tsc ./src/m3uParse.ts")];
+                case 7:
+                    _b.sent();
+                    //Reinicia o pm2 dentro do servidor remoto
+                    //await shell.exec("pm2 restart automation-app");
                     return [2 /*return*/, "Filmes n\u00E3o duplicados foram inseridos no banco de dados - verifique o console"];
-                case 11:
+                case 8:
                     error_1 = _b.sent();
                     console.log(error_1.message);
                     return [2 /*return*/, ({ message: 'Não inserido no banco de dados' })];
-                case 12: return [2 /*return*/];
+                case 9: return [2 /*return*/];
             }
-        });
-    });
-}
-function eraseFiles(req, res) {
-    return __awaiter(this, void 0, void 0, function () {
-        var line, username, lineNumber;
-        return __generator(this, function (_a) {
-            lineNumber = 1;
-            while (line = broadbandLines.next()) {
-                console.log("Line ".concat(lineNumber, " has: ").concat(line.toString('ascii')));
-                username = line.toString('ascii');
-                lineNumber++;
-            }
-            console.log('Username: EraseFiles' + username);
-            fs.truncate('./src/' + username + '/urls.txt', 0, function () { console.log('done'); });
-            fs.truncate('./src/' + username + '/filenames.txt', 0, function () { console.log('done'); });
-            return [2 /*return*/];
         });
     });
 }
@@ -171,15 +139,13 @@ function exportM3uToJson(req, res) {
 //Pega txtArea(Body) e cria o arquivo TS
 function createTS(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var txtArea, folderName, filePath, line, username, lineNumber, error_2;
+        var txtArea, folderName, line, username, lineNumber, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    console.log('CreateTS - Dentro');
+                    _a.trys.push([0, 5, , 6]);
                     txtArea = req.body.txtArea;
                     folderName = req.body.folderName;
-                    filePath = './src/logs/log-' + now + '.txt';
                     line = void 0;
                     username = void 0;
                     lineNumber = 1;
@@ -188,24 +154,37 @@ function createTS(req, res) {
                         username = line.toString('ascii');
                         lineNumber++;
                     }
-                    // //remove url.txt and filenames.txt
-                    fs.truncate('./src/' + username + '/urls.txt', 0, function () { console.log('done'); });
-                    fs.truncate('./src/' + username + '/filenames.txt', 0, function () { console.log('done'); });
-                    // Abrir um arquivo de texto para escrita
-                    fs.createWriteStream(filePath, { flags: 'a' });
-                    return [4 /*yield*/, fs2.appendFile(filePath, "".concat(folderName, "\r\n"), 'utf8')];
+                    //console.log(folderName);
+                    return [4 /*yield*/, fs.writeFileSync('./src/' + username + '/foldername.txt', folderName, 'utf8')];
                 case 1:
+                    //console.log(folderName);
                     _a.sent();
-                    console.log(folderName);
-                    fs.writeFileSync('./src/' + username + '/foldername.txt', folderName, 'utf8');
-                    console.log(txtArea);
-                    fs.writeFileSync('./src/m3u-example.ts', txtArea, 'utf8');
-                    return [2 /*return*/, "Lista carregada - AGUARDE **(5)seg e siga os passos pelos n\u00FAmeros"];
+                    // //remove url.txt and filenames.txt
+                    // console.log("Estou aqui");
+                    return [4 /*yield*/, fs2.truncate('./src/' + username + '/urls.txt', 0, function () { console.log('done'); })];
                 case 2:
+                    // //remove url.txt and filenames.txt
+                    // console.log("Estou aqui");
+                    _a.sent();
+                    return [4 /*yield*/, fs2.truncate('./src/' + username + '/filenames.txt', 0, function () { console.log('done'); })];
+                case 3:
+                    _a.sent();
+                    //console.log(txtArea);
+                    fs.writeFileSync('./src/m3u-example.ts', txtArea, 'utf8');
+                    return [4 /*yield*/, shell.exec("npx tsc ./src/m3uParse.ts")
+                        //Reinicia o pm2 dentro do servidor remoto
+                        //await shell.exec("pm2 restart automation-app");
+                    ];
+                case 4:
+                    _a.sent();
+                    //Reinicia o pm2 dentro do servidor remoto
+                    //await shell.exec("pm2 restart automation-app");
+                    return [2 /*return*/, "Lista carregada - AGUARDE **(5)seg e siga os passos pelos n\u00FAmeros"];
+                case 5:
                     error_2 = _a.sent();
                     console.log(error_2.message);
                     return [2 /*return*/, "Lista n\u00E3o carregada - Tente carregar a lista novamente"];
-                case 3: return [2 /*return*/];
+                case 6: return [2 /*return*/];
             }
         });
     });
@@ -213,6 +192,5 @@ function createTS(req, res) {
 module.exports = {
     exportM3uToJson: exportM3uToJson,
     createTS: createTS,
-    saveMongDB: saveMongDB,
-    eraseFiles: eraseFiles
+    saveMongDB: saveMongDB
 };

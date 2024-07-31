@@ -1,0 +1,46 @@
+--Dependencia TypeScript
+npm install -D @types/node
+npm i -D typescript
+npm install esm
+npm i ssh2-sftp-client
+
+
+--m3uParse
+npm install m3u-parser-generator --save
+npm install json-query
+
+//roda modulos no typeScript
+npm i --save-dev @types/node
+npm i --save n-readlines
+
+npm install -g typescript**
+npm i shelljs
+npm i express-session**
+npm i mysql2
+npm i mongoose
+
+
+optionals
+npm i body-parser
+npm i nodemon 
+
+
+test para manipular jsonfile
+npm install json-query
+
+nodeFTP-SSH
+npm install ssh2-sftp-client
+npm i remote-exec
+
+
+run automatic changes
+npm install -g node-dev
+
+
+npm install bcrypt
+npm i ejs
+
+npm install --save simple-ssh
+
+
+

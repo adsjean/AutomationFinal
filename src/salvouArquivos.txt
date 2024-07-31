@@ -90,3 +90,40 @@ Pasta: asdasda - log: Lista Carregada - Data: Sat Jul 20 2024 12:56:37 GMT+0100 
 Pasta: adasda - log: Lista Carregada - Data: Sat Jul 20 2024 12:58:28 GMT+0100 (Hora de verão da Europa Ocidental)
 Pasta: asdsada - log: Lista Carregada - Data: Sat Jul 20 2024 12:58:41 GMT+0100 (Hora de verão da Europa Ocidental)
 Pasta: asdsada - log: Lista Carregada - Data: Sat Jul 20 2024 12:59:35 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Pasta: again - log: Lista Carregada - Data: Tue Jul 30 2024 17:55:24 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Pasta: bora - log: Lista Carregada - Data: Tue Jul 30 2024 18:22:46 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: again - log: Lista Carregada - Data: Tue Jul 30 2024 18:34:33 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: test - log: Lista Carregada - Data: Tue Jul 30 2024 18:37:50 GMT+0100 (Hora de verão da Europa Ocidental)
+Pasta: 12123 - log: Lista Carregada - Data: Tue Jul 30 2024 18:40:22 GMT+0100 (Hora de verão da Europa Ocidental)
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Usuario: anonymous - Entrou no sistema
+Pasta: /pt/test - log: Lista Carregada - Data: Wed Jul 31 2024 17:10:27 GMT+0100 (Hora de verão da Europa Ocidental)

@@ -1,8 +1,4 @@
-let shell = require("shelljs");
-
 const {
-  // runTS,
-  // runJS,
   jsGenerate,
   sshCommands// Certifique-se de usar a nomenclatura correta
 } = require('./shellRun');
@@ -13,16 +9,16 @@ const {
   saveMongDB // Certifique-se de usar a nomenclatura correta
 } = require('./m3uParse');
 
-
+let shell = require("shelljs");
 const express = require('express');
 const router = express.Router(); 
 const bodyParser = require('body-parser');
+const { Worker } = require("node:worker_threads");
 
 
 module.exports = (pool) => {  
-  // Magic happen RunTS(POST) e RUNJS(GET) - Arquivos essenciais para a aplicação
+  // Magic happen RunTS(POST) - Arquivos essenciais para testar POSTS/GET a aplicação
   // router.post('/magic',  (req, res) => runTS(req, res)); //Gera o arquivo .JS//SHELL-Proteger
-  //router.get('/magic',  (req, res) => runJS(req, res)); //Gera o Json do file m3u-example//SHELL-Proteger
 
   // API Json a ser mostrada na tela - Usada para capturar dados da lista como URL, Nome, Logo, etc
   router.get('/getjson', (req, res) => exportM3uToJson(req, res));
@@ -59,11 +55,8 @@ module.exports = (pool) => {
 
   // commandSSH - Roda comando dentro do servidor dedicado
   router.post('/sshcommands',async function(req,res){
-
-    const resultado = await sshCommands(req, res);
-    console.log(resultado)
-    res.json({ message: resultado });
-    
+    const worker = new Worker("./src/sshCommands.js"); 
+    res.json({ message: `Download sendo execultado dentro do servidor remoto. Confira acessado por FTP ou SSH` });    
   })
   
   return router;
